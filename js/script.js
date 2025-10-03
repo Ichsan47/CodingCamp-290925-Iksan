@@ -1,7 +1,6 @@
 let todos = [];
 let currentFilter = '';
 
-// Custom Modal Functions
 function showAlert(message, title = "Alert") {
     return new Promise((resolve) => {
         const modal = document.getElementById('alertModal');
@@ -20,8 +19,7 @@ function showAlert(message, title = "Alert") {
         };
         
         okBtn.addEventListener('click', handleOk);
-        
-        // Close on overlay click
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 handleOk();
@@ -55,7 +53,6 @@ function showConfirm(message, title = "Confirm") {
         okBtn.addEventListener('click', handleOk);
         cancelBtn.addEventListener('click', handleCancel);
         
-        // Close on overlay click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 handleCancel();
@@ -97,7 +94,6 @@ function showPrompt(message, title = "Input", defaultValue = "") {
         cancelBtn.addEventListener('click', handleCancel);
         inputEl.addEventListener('keypress', handleEnter);
         
-        // Close on overlay click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 handleCancel();
@@ -106,7 +102,6 @@ function showPrompt(message, title = "Input", defaultValue = "") {
     });
 }
 
-// Todo Functions
 async function addTodo() {
     const taskText = document.getElementById('taskInput').value.trim();
     const dueDate = document.getElementById('dateInput').value;
@@ -177,7 +172,6 @@ function renderTodos() {
     
     let todosToShow = todos;
     
-    // Apply filter if exists
     if (currentFilter) {
         todosToShow = todos.filter(todo => 
             todo.text.toLowerCase().includes(currentFilter) ||
@@ -211,7 +205,6 @@ function renderTodos() {
     });
 }
 
-// Event listeners
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addBtn').addEventListener('click', addTodo);
     document.getElementById('filterBtn').addEventListener('click', filterTodos);
